@@ -9,3 +9,16 @@
 :wrench: Tecnologias utilizadas:
 ----------------------
 - **C++**
+
+## Veja como rodar a aplicação:
+
+```bash
+
+# Clone o respositório com o comando:
+
+ $ git clone https://github.com/Cristianojr9/Estrutura-de-Dados-2020.1/
+ 
+ $ cd {pasta escolhida}
+ 
+ $ Rode o comando ./main.cpp 
+  ```
