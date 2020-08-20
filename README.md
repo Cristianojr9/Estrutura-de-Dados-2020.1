@@ -10,7 +10,7 @@
 ----------------------
 - **C++**
 
-## Veja como rodar a aplicação:
+## :pushpin: Veja como rodar a aplicação:
 
 ```bash
 
