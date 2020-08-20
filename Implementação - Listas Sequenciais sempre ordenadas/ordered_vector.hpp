@@ -27,4 +27,5 @@ class ordered_vector {
 
         // Métodos auxiliares
         unsigned int obter_capacidade() { return capacidade; }
+        void insertionSort(int vetor[], int tamanho);
 };

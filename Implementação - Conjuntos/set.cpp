@@ -17,6 +17,22 @@ set::set(unsigned int capacidade) {
 // NOTE Observe que aumentar em apenas uma unidade não nos alivia da pressão que tínhamos antes...
 bool set::inserir(int elemento) {
     // TODO Implementação.
+        // TODO Reorganizar o código
+    if(tamanho < capacidade) {
+        vetor[tamanho] = elemento;
+        tamanho++;
+    } else {
+        int* aux = new int[capacidade * 2];        
+        for(unsigned int i = 0; i < capacidade; i++) {
+            aux[i] = vetor[i];
+        }       
+        aux[capacidade] = elemento;
+        delete[] vetor;
+        vetor = aux;
+        remover(0);
+        tamanho++;
+        capacidade *= 2;
+    }
 }
 
 // Remover "elemento" da coleção.
@@ -24,11 +40,33 @@ bool set::inserir(int elemento) {
 // NOTE Necessário preservar a ordem relativa dos que restarem.
 bool set::remover(int elemento) {
     // TODO Implementação.
+    if (pertence(elemento)) {
+        for (unsigned int i = 0; i < tamanho; i++) {
+            if(vetor[i] == elemento) {
+                for(unsigned int j = i; j < tamanho; j++) {
+                    int aux = vetor[j];
+                    vetor[j] = vetor[j + 1];
+                    vetor[j + 1] = aux;
+                }
+                tamanho--;
+                return true;
+            }
+        }
+        return false;
+    } else {
+        return false;
+    }
 }
 
 // Determinar se "elemento" é um dos elementos ainda na coleção.
 bool set::pertence(int elemento) const {
     // TODO Implementação.
+    for(unsigned int i = 0; i < tamanho; i++) {
+        if(vetor[i] == elemento) {
+            return true;
+        }  
+    }
+    return false;       
 }
 
 
@@ -42,6 +80,11 @@ void set::uniao_com(set const &conjunto) {
 // Tornar o próprio conjunto (`this`) o resultado de sua intersecção com o outro informado.
 void set::intersecao_com(set const &conjunto) {
     // TODO Implementação.
+    for(unsigned l = 0; l < conjunto.tamanho; l++) {
+        if(!pertence(conjunto.vetor[l])) {
+            remover(conjunto.vetor[l]);
+        }
+    }
 }
 
 // Testar se este conjunto (`this`) está contido no outro informado.

@@ -19,6 +19,21 @@ ordered_vector::ordered_vector(unsigned int tamanho, int inicial) {
     }
 }
 
+// Método de Ordenação
+
+void insertionSort(int vetor[], int tamanho) {
+    for (int i = 1; i < tamanho; i++) {
+		int aux = vetor[i];
+		int j = i - 1;
+		
+		while ((j >= 0) && (vetor[j] > aux)) {
+			vetor[j + 1] = vetor[j];
+			j--;
+		}
+		
+		vetor[j + 1] = aux;
+	}
+}
 
 // --- Métodos de "Coleção" ---
 
@@ -29,6 +44,7 @@ void ordered_vector::inserir(int elemento) {
     if(tamanho < capacidade) {
         vetor[tamanho] = elemento;
         tamanho++;
+        insertionSort(vetor, tamanho);
     } else {
         int* aux = new int[capacidade * 2];        
         for(unsigned int i = 0; i < capacidade; i++) {
@@ -40,6 +56,7 @@ void ordered_vector::inserir(int elemento) {
         remover(0);
         tamanho++;
         capacidade *= 2;
+        insertionSort(vetor, tamanho);
     }
 }
 
