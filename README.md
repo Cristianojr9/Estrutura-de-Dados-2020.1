@@ -22,3 +22,5 @@
  
  $ Rode o comando ./main.cpp 
   ```
+
+Autor: Cristiano Júnior
